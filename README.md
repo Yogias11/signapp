@@ -47,6 +47,11 @@ $ deactivate
 
 #### uwsgi
 
+Centos 7
+
+
+
+Ubuntu
 Please edit first signapp .ini and .conf; after that please copy .conf to your startup init
 
 ```sh

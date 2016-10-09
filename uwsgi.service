@@ -1,0 +1,11 @@
+[Unit]
+Description=uWSGI instance to serve signapp
+
+[Service]
+#ExecStartPre=-/usr/bin/bash -c 'mkdir -p /run/uwsgi; chown signapp:nginx /run/uwsgi'
+ExecStart=/usr/bin/bash -c 'cd /home/signapp/www; source signappenv/bin/activate; uwsgi --ini signapp.ini'
+
+[Install]
+WantedBy=multi-user.target
+
+
