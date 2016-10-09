@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+"""
+config.py 
+set paramater of your server
+"""
+uri1 = "/app0"
+dir1 = "/home/app/app0" 
+host1 = "10.14.0.22"
+host2 = "10.14.0.21"
+host3 = "10.14.0.20"
+host4 = "10.14.0.19"
+username1 = "orang"
+password1 = "gila"
+
+
+gmsuri = "/app1"
+dir2 = "/home/app/app1"
+logpath = "/var/log/nginx/error.log"
+gms1 = "10.14.0.24"
+gms2 = "10.14.0.24"
+gms3 = "10.14.0.24"
+gms4 = "10.14.0.24"
+username = "okooo"
+password = "lelet"
+
+portaluri = "/portal"
+portal1 = "10.14.0.12"
+portal2 = "10.14.0.13"
+portal3 = "10.14.0.21"
+portal4 = "10.14.0.98"
+
+gmssuri = "/gmss"
+gmss1 = "10.14.0.78" 
+gmss2 = "10.14.0.79"
+gmss3 = "10.14.0.97"
+
+
+
+
