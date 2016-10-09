@@ -46,13 +46,19 @@ $ deactivate
 ```
 
 #### uwsgi
+Please edit first signapp .ini
 
 Centos 7
+edit uwsgi.service; and copy to your centos 7 service dir
 
+```sh
+# cp uwsgi.service /etc/systemd/system/
+# systemctl start uwsgi
+```
 
 
 Ubuntu
-Please edit first signapp .ini and .conf; after that please copy .conf to your startup init
+edit signapp.conf; after that please copy .conf to your startup init
 
 ```sh
 $ sudo cp signapp.conf /etc/init/
@@ -64,11 +70,11 @@ $ sudo start signapp
 ```sh
 server {
     listen 80;
-    server_name gitar.vas.web.id;
+    server_name sign.vas.web.id;
 
     location / {
         include         uwsgi_params;
-        uwsgi_pass      unix:/home/devops/gitar/gitar.sock;
+        uwsgi_pass      unix:/home/signapp/www/signapp.sock;
     }
 }
 ```
