@@ -22,7 +22,7 @@ Centos 6 x86_64_ (still on progress)
 
 Centos 7
 ```sh
-# yum install python-pip python-dev
+# yum install python-pip python-dev nginx
 # pip install virtualenv
 # pip install uwsgi
 ```
