@@ -54,6 +54,8 @@ edit uwsgi.service; and copy to your centos 7 service dir
 ```sh
 # cp uwsgi.service /etc/systemd/system/
 # systemctl start uwsgi
+# systemctl status uwsgi
+# systemctl enable uwsgi
 ```
 
 
