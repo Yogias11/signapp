@@ -76,7 +76,7 @@ server {
 
     location / {
         include         uwsgi_params;
-        uwsgi_pass      unix:/home/signapp/www/signapp.sock;
+        uwsgi_pass      unix:/run/uwsgi/signapp.sock;
     }
 }
 ```
