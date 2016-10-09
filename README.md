@@ -57,6 +57,16 @@ edit uwsgi.service; and copy to your centos 7 service dir
 # systemctl status uwsgi
 # systemctl enable uwsgi
 ```
+PLease check selinux for enabling nginx to read socket
+```sh
+# tail /var/log/audit/audit.log
+# getenforce
+Enforcing
+# setenforce 0
+# getenforce
+Permissive
+# systemctl restart nginx
+```
 
 
 Ubuntu
