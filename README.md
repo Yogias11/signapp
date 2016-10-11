@@ -116,3 +116,9 @@ mongod soft nproc 32000
 # systemctl restart mongod
 ```
 
+Use mongo db run mongo
+> use signapp
+> db.sign.insert({NPM:"1234455"})
+> db.sign.find()
+> quit()
+
