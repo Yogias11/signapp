@@ -9,11 +9,13 @@ def application(environ, start_response):
 	cpdt = escape(uri)[1:]
 
 	sign = signapp.Signapp()
-	data = sign.decodeData(cpdt)
-	respon=''	
-	for a in sign.getAllSign(data):
-		respon=respon+str(a)
-
+	if len(cpdt)==18:
+		data = sign.decodeData(cpdt)
+		respon=''	
+		for a in sign.getAllSign(data):
+			respon=respon+str(a)
+	else:
+		respon = "OK"
 
 	start_response('200 OK', [('Content-Type', 'text/html')])
 	
