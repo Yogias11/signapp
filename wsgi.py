@@ -9,7 +9,7 @@ def application(environ, start_response):
 	cpdt = escape(uri)[1:]
 
 	sign = signapp.Signapp()
-	if len(cpdt)==18:
+	if len(cpdt)%2==0:
 		data = sign.decodeData(cpdt)
 		respon=''	
 		for a in sign.getAllSign(data):
