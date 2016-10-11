@@ -20,7 +20,10 @@ html_begin = """
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+"""
+
+html_end = """
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -37,9 +40,6 @@ html_begin = """
         console.log("ID Token: " + id_token);
       };
     </script>
-"""
-
-html_end = """
 </body>
 </html>
 """
