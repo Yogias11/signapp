@@ -90,3 +90,27 @@ server {
     }
 }
 ```
+
+#### MongoDB
+This application need mongodb for storing student guidance data. please install first rely on your Operating System
+
+Centos 7
+```sh
+# vi /etc/yum.repos.d/mongodb-org.repo
+[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+# yum repolist
+# yum install mongodb-org
+# systemctl start mongod
+# tail /var/log/mongodb/mongod.log
+# mongo
+# vi /etc/security/limits.d/20-nproc.conf
+…
+mongod soft nproc 32000
+# systemctl restart mongod
+```
+
