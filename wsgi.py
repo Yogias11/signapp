@@ -18,7 +18,7 @@ def application(environ, start_response):
 	else:
 		respon = "OK"
 
-	respon = respon + getHtmlEnd()
+	respon = respon + sign.getHtmlEnd()
 	start_response('200 OK', [('Content-Type', 'text/html')])
 	
 	return [respon]
