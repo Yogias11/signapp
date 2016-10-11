@@ -4,6 +4,7 @@ Sign Approval Application for guidance and conseling Lecturer
 ## Requirement
  * virtualenv
  * uwsgi
+ * pymongo
 
 ### Instalation
 Centos 6 x86_64_ (still on progress)
@@ -18,6 +19,7 @@ Centos 6 x86_64_ (still on progress)
 # yum install python-pip
 # pip install virtualenv
 # pip install uwsgi
+# pip install pymongo
 ```
 
 Centos 7
