@@ -6,10 +6,12 @@ import signapp
 def application(environ, start_response):
 	uri = environ['REQUEST_URI']
 
-	uri = escape(uri)
+	cpdt = escape(uri)[1:]
+
 	sign = signapp.Signapp()
+	data = sign.decodeData(cpdt)
 	respon=''	
-	for a in sign.getAllSign(uri):
+	for a in sign.getAllSign(data):
 		respon=respon+str(a)
 
 
