@@ -39,3 +39,9 @@ class Signapp(object):
 		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
 		dec = msg.decode("hex")
 		return obj.decrypt(dec)
+
+	def getHtmlBegin(self):
+		return config.html_begin
+
+	def getHtmlEnd(self):
+		return config.html_end

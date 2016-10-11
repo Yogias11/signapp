@@ -9,6 +9,7 @@ def application(environ, start_response):
 	cpdt = escape(uri)[1:]
 
 	sign = signapp.Signapp()
+	respon = sign.getHtmlBegin()
 	if len(cpdt)%2==0:
 		data = sign.decodeData(cpdt)
 		respon=''	
@@ -17,6 +18,7 @@ def application(environ, start_response):
 	else:
 		respon = "OK"
 
+	respon = respon + getHtmlEnd()
 	start_response('200 OK', [('Content-Type', 'text/html')])
 	
 	return [respon]
