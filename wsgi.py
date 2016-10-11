@@ -9,7 +9,7 @@ def application(environ, start_response):
 	uri = escape(uri)
 	sign = signapp.Signapp()	
 
-	respon=uri
+	respon="ok"
 
 
 	start_response('200 OK', [('Content-Type', 'text/html')])
