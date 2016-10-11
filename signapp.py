@@ -19,11 +19,11 @@ class Signapp(object):
 		self.db.sign
 		return self.db.sign.find({"NPM":NPM})
 	
-	def getLastSign(self,NPM)
+	def getLastSign(self,NPM):
 		self.db.sign
 		return self.db.sign.find_one({"NPM":NPM})
 	
-	def insertSign(self,NPM,Nilai,rcvdate)
+	def insertSign(self,NPM,Nilai,rcvdate):
 		self.db.sign
 		data = {"NPM":NPM,"Nilai":Nilai,"waktu":rcvdate}
 
