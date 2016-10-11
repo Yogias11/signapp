@@ -5,6 +5,7 @@ Sign Approval Application for guidance and conseling Lecturer
  * virtualenv
  * uwsgi
  * pymongo
+ * pycrypto
 
 ### Instalation
 Centos 6 x86_64_ (still on progress)
@@ -20,6 +21,7 @@ Centos 6 x86_64_ (still on progress)
 # pip install virtualenv
 # pip install uwsgi
 # pip install pymongo
+# pip install pycrypto
 ```
 
 Centos 7
