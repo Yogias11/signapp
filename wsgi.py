@@ -29,7 +29,7 @@ def application(environ, start_response):
 	hend = sign.getHtmlEnd()
 
 	respon = hbegin + result + hend
-	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(response_body)))])
+	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
 	
 	return [respon]
 
