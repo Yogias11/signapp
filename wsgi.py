@@ -7,7 +7,7 @@ def application(environ, start_response):
 	uri = environ['REQUEST_URI']
 
 	uri = escape(uri)
-	sign = signapp.Signapp()	
+	#sign = signapp.Signapp()	
 
 	respon="ok"
 
