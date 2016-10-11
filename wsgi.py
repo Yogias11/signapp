@@ -9,16 +9,18 @@ def application(environ, start_response):
 	cpdt = escape(uri)[1:]
 
 	sign = signapp.Signapp()
-	respon = sign.getHtmlBegin()
+
+	hbegin = sign.getHtmlBegin()
 	if len(cpdt)%2==0:
 		data = sign.decodeData(cpdt)
-		respon=''	
+		result =''	
 		for a in sign.getAllSign(data):
-			respon=respon+str(a)
+			result=result+str(a)
 	else:
-		respon = "OK"
+		result = "OK"
+	hend = sign.getHtmlEnd()
 
-	respon = respon + sign.getHtmlEnd()
+	respon = hbegin + result + hend
 	start_response('200 OK', [('Content-Type', 'text/html')])
 	
 	return [respon]
