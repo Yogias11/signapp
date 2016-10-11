@@ -10,7 +10,7 @@ def application(environ, start_response):
 	sign = signapp.Signapp()
 	respon=''	
 	for a in sign.getAllSign(uri):
-		respon=respon+a
+		respon=respon+str(a)
 
 
 	start_response('200 OK', [('Content-Type', 'text/html')])
