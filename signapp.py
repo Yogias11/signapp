@@ -6,9 +6,12 @@ created by Rolly Maulana Awangga
 """
 import config
 import pymongo
+from Crypto.Cipher import AES
 
 class Signapp(object):
 	def __init__(self):
+		self.key = config.key
+		self.iv = config.iv
 		self.opendb()
 
 	def opendb(self): 
@@ -27,3 +30,12 @@ class Signapp(object):
 		self.db.sign
 		data = {"NPM":NPM,"Nilai":Nilai,"waktu":rcvdate}
 
+	def encodeData(self,msg):
+		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
+		cp = obj.encrypt(msg)
+		return cp.encode("hex")
+
+	def decodeData(self,msg):
+		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
+		dec = msg.decode("hex")
+		return obj.decrypt(dec)

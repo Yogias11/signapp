@@ -7,4 +7,7 @@ mongohost = "localhost"
 mongoport = 27017
 
 
+key = "your key 16 char"
+iv = "your iv 16 char"
+
 
