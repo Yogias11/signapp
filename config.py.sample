@@ -3,21 +3,21 @@
 config.py 
 set paramater of your server
 """
-
+### Menus
 uri1 = "/aiO"
 uri2 = "/GFD"
 uri3 = "/FCD"
 
-
+### Database
 mongohost = "localhost"
 mongoport = 27017
 
-
+### Security module
 key = "your key 16 char"
 iv = "your iv 16 char"
+tokenurl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="
 
-
-
+### HTML
 html_begin = """
 <html lang="en">
   <head>

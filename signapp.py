@@ -6,6 +6,7 @@ created by Rolly Maulana Awangga
 """
 import config
 import pymongo
+import urllib
 from Crypto.Cipher import AES
 
 class Signapp(object):
@@ -56,5 +57,9 @@ class Signapp(object):
 		else:
 			opsi = 0
 		return opsi
-
+	
+	def tokenValidation(self,token):
+		url = config.tokenurl+token
+		response = urllib.urlopen(url)
+		return response
 
