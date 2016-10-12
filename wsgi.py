@@ -14,12 +14,12 @@ def application(environ, start_response):
 	## Declare apps
 	sign = signapp.Signapp()
 	## Menu Logic
-	if sign.getMenu(uri[:4])==0:
+	if sign.getMenu(uri[:4])==1:
 		data = sign.decodeData(uri[4:])
 		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
-	if sign.getMenu(uri[:4])==1:
+	if sign.getMenu(uri[:4])==2:
 		result = request_body
 	else:
 		result = "OK"
