@@ -30,8 +30,8 @@ html_end = """
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         if(!profile.getEmail()){
-        document.getElementById('button').style.visibilty = "hidden";
-	document.getElementById('Message').value = profile.getName() + "";
+        document.getElementById('button').style.visibility = "hidden";
+	document.getElementById('Message').innerHTML = "Login Sebagai : " + profile.getEmail();
 		
 	}        
 	console.log("ID: " + profile.getId()); // Don't send this directly to your server!
