@@ -23,12 +23,18 @@ html_begin = """
 """
 
 html_end = """
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<div id="Message"></div>
+<div class="g-signin2" id="button" data-onsuccess="onSignIn"></div>
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        if(!profile.getEmail()){
+        document.getElementById('button').style.visibilty = "hidden";
+	document.getElementById('Message').value = profile.getName() + "";
+		
+	}        
+	console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         console.log('Full Name: ' + profile.getName());
         console.log('Given Name: ' + profile.getGivenName());
         console.log('Family Name: ' + profile.getFamilyName());
