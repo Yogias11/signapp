@@ -4,32 +4,29 @@ from cgi import escape
 import signapp
 
 def application(environ, start_response):
+	## passing environ uwsgi PARAM
 	try:
 		request_body_size = int(environ.get('CONTENT_LENGTH', 0))
 	except (ValueError):
 		request_body_size = 0
-	
 	uri = environ['REQUEST_URI']
 	request_body = environ['wsgi.input'].read(request_body_size)
-
-	cpdt = escape(uri)[1:]
-
+	## Declare apps
 	sign = signapp.Signapp()
-
-	hbegin = sign.getHtmlBegin()
-	if len(cpdt)%2==0:
-		data = sign.decodeData(cpdt)
-		result =''	
+	## Menu Logic
+	if sign.getMenu(uri[:4])==0:
+		data = sign.decodeData(uri[4:])
+		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
-	if request_body_size != 0:
+	if sign.getMenu(uri[:4])==1:
 		result = request_body
 	else:
 		result = "OK"
+	## Passing HTML to client
+	hbegin = sign.getHtmlBegin()
 	hend = sign.getHtmlEnd()
-
 	respon = hbegin + result + hend
 	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
-	
 	return [respon]
 

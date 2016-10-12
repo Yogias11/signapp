@@ -3,6 +3,12 @@
 config.py 
 set paramater of your server
 """
+
+uri1 = "/aiO"
+uri2 = "/GFD"
+uri3 = "/FCD"
+
+
 mongohost = "localhost"
 mongoport = 27017
 
