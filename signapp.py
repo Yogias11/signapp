@@ -7,6 +7,7 @@ created by Rolly Maulana Awangga
 import config
 import pymongo
 import urllib
+import random
 from Crypto.Cipher import AES
 
 class Signapp(object):
@@ -19,6 +20,32 @@ class Signapp(object):
 		self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
 		self.db = self.conn.signapp
 	
+	def random(self,ln):
+                ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                chars=[]
+                for i in range(ln):
+                        chars.append(random.choice(ALPHABET))
+                return "".join(chars)
+
+	def urlEncode16(self,uri):
+		ln = len(uri)
+		sp = 16 - len(uri) - len(str(ln))
+		if ln>9:
+			dt = str(ln)+uri+self.random(sp)
+		else:
+			dt = "0"+str(ln)+uri+self.random(sp)
+		return self.encodeData16(dt)
+
+	def urlDecode16(self,uri):
+		dt = self.decodeData16(uri)
+		if dt[:1] == "0":
+			ln = int(dt[:2])
+			ret = uri[2:2+ln]
+		else:
+			ln = int(dt[:1])
+			ret = uri[1:1+ln]
+		return ret		
+
 	def getAllSign(self,NPM):
 		self.db.sign
 		return self.db.sign.find({"NPM":NPM})
