@@ -15,7 +15,7 @@ def application(environ, start_response):
 	## Declare apps
 	sign = signapp.Signapp()
 	## Menu Logic
-	if sign.getMenu(uri[:4])==1:
+	if sign.getMenu(uri[:4])=="key":
 		data = sign.decodeData(uri[4:])
 		result = ''
 		for a in sign.getAllSign(data):
@@ -23,7 +23,7 @@ def application(environ, start_response):
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		respon = hbegin + result + hend
-	if sign.getMenu(uri[:4])==2:
+	if sign.getMenu(uri[:4])=="token":
 		result1 = request_body
 		result2 = post.get('token', [''])[0]
 		respon = result1+"<br>"+result2

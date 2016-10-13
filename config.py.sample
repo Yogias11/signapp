@@ -4,9 +4,8 @@ config.py
 set paramater of your server
 """
 ### Menus
-uri1 = "/aiO"
-uri2 = "/GFD"
-uri3 = "/FCD"
+keyuri = "/key"
+tokenuri = "/token"
 
 ### Database
 mongohost = "localhost"
@@ -51,7 +50,7 @@ html_end = """
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', './TKN');
+	xhr.open('POST', '.%s');
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.onload = function() {
   		console.log('Signed in as: ' + xhr.responseText);
@@ -61,5 +60,5 @@ html_end = """
     </script>
 </body>
 </html>
-"""
+"""%(tokenuri)
 

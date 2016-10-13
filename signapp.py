@@ -48,14 +48,12 @@ class Signapp(object):
 		return config.html_end
 
 	def getMenu(self,uri):
-		if uri == config.uri1:
-			opsi = 1
-		elif uri == config.uri2:
-			opsi = 2
-		elif uri == config.uri3:
-			opsi =3
+		if uri == config.keyuri:
+			opsi = "key"
+		elif uri == config.tokenuri:
+			opsi = "token"
 		else:
-			opsi = 0
+			opsi = "other"
 		return opsi
 	
 	def tokenValidation(self,token):
