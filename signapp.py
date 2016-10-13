@@ -56,17 +56,28 @@ class Signapp(object):
 			opsi = "other"
 		return opsi
 	
-	def getData(self,token):
+	def getTokenData(self,token):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
 		html = response.read()
 		return html
 
 	def tokenValidation(self,token):
-		html = self.getData(token)
+		html = self.getTokenData(token)
 		if (html.find(config.aud)>0) and (html.find(config.iss)>0):
 			ret = "valid"
 		else:
 			ret = "invalid"
 		return ret
+
+	def getJsonData(self,name,json):
+		lookup = '"%s": "'%name
+		b = json.find(lookup)
+		c = json[b:].find(':')
+		c+=1
+		b = b+c
+		c = json[b:].find(',')
+		c = b+c
+		data = json[b:c].strip().strip('"')
+		return data
 
