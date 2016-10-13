@@ -37,13 +37,16 @@ class Signapp(object):
 		return self.encodeData16(dt)
 
 	def urlDecode16(self,uri):
-		dt = self.decodeData16(uri)
-		if dt[:1] == "0":
-			ln = int(dt[:2])
-			ret = dt[2:2+ln]
+		if len(uri)%16 == 0:
+			dt = self.decodeData16(uri)
+			if dt[:1] == "0":
+				ln = int(dt[:2])
+				ret = dt[2:2+ln]
+			else:
+				ln = int(dt[:1])
+				ret = dt[1:1+ln]
 		else:
-			ln = int(dt[:1])
-			ret = dt[1:1+ln]
+			ret = "invalid"
 		return ret		
 
 	def getAllSign(self,NPM):

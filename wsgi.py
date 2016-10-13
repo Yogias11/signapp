@@ -15,15 +15,16 @@ def application(environ, start_response):
 	## Declare apps
 	sign = signapp.Signapp()
 	## Menu Logic
-	if sign.getMenu(uri[:4])=="key":
-		data = sign.decodeData(uri[4:])
+	url=sign.urlDecode16(uri[:1])
+	if sign.getMenu(url[:3])=="key":
+		data = url[4:]
 		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		respon = hbegin + result + hend
-	if sign.getMenu(uri[:4])=="token":
+	if sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
