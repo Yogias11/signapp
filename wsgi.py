@@ -20,14 +20,19 @@ def application(environ, start_response):
 		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
+		hbegin = sign.getHtmlBegin()
+		hend = sign.getHtmlEnd()
+		respon = hbegin + result + hend
 	if sign.getMenu(uri[:4])==2:
-		result = post.get('token', [''])[0]
+		result1 = request_body
+		result2 = post.get('token', [''])[0]
+		respon = result1+"<br>"+result2
 	else:
-		result = "OK"
+		result = "ganteng"
+		hbegin = sign.getHtmlBegin()
+		hend = sign.getHtmlEnd()
+		respon = hbegin + result + hend
 	## Passing HTML to client
-	hbegin = sign.getHtmlBegin()
-	hend = sign.getHtmlEnd()
-	respon = hbegin + result + hend
 	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
 	return [respon]
 
