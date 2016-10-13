@@ -63,7 +63,7 @@ class Signapp(object):
 		return html
 
 	def tokenValidation(self,token):
-		html = this.getData(token)
+		html = self.getData(token)
 		if (html.find(config.aud)>0) and (html.find(config.iss)>0):
 			ret = "valid"
 		else:
