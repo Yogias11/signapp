@@ -60,7 +60,8 @@ class Signapp(object):
 	def tokenValidation(self,token):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
-		data = response.read()
+		html = response.read()
+		data = json.loads(html)
 		if (data['aud'] == config.aud) and (data['iss'] == config.iss):
 			ret = data['email']
 		else:
