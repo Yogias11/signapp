@@ -24,10 +24,10 @@ def application(environ, start_response):
 		hend = sign.getHtmlEnd()
 		respon = hbegin + result + hend
 	if sign.getMenu(uri[:4])=="token":
-		result1 = request_body
-		result2 = post.get('token', [''])[0]
-		userdata = sign.tokenValidation(result2)
-		respon = result1+"<br>"+userdata
+		token = post.get('token', [''])[0]
+		html = sign.getTokenData(token)
+		email = sign.getJsonData('email',html)
+		respon = "<br>"+email
 	else:
 		result = "ganteng"
 		hbegin = sign.getHtmlBegin()
