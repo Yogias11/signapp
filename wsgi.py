@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from cgi import escape
+from cgi import parse_qs
 import signapp
 
 def application(environ, start_response):
@@ -11,6 +11,7 @@ def application(environ, start_response):
 		request_body_size = 0
 	uri = environ['REQUEST_URI']
 	request_body = environ['wsgi.input'].read(request_body_size)
+	post = parse_qs(request_body)
 	## Declare apps
 	sign = signapp.Signapp()
 	## Menu Logic
@@ -20,7 +21,7 @@ def application(environ, start_response):
 		for a in sign.getAllSign(data):
 			result=result+str(a)
 	if sign.getMenu(uri[:4])==2:
-		result = request_body
+		result = post.get('token', [''])[0]
 	else:
 		result = "OK"
 	## Passing HTML to client
