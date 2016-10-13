@@ -59,5 +59,5 @@ class Signapp(object):
 	def tokenValidation(self,token):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
-		return response
+		return response.read()
 
