@@ -61,7 +61,7 @@ class Signapp(object):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
 		data = response.read()
-		if (data['aud'] == config.aud) and (data['iss'] == iss):
+		if (data['aud'] == config.aud) and (data['iss'] == config.iss):
 			ret = data['email']
 		else:
 			ret = ""
