@@ -7,6 +7,7 @@ created by Rolly Maulana Awangga
 import config
 import pymongo
 import urllib
+import json
 from Crypto.Cipher import AES
 
 class Signapp(object):
@@ -59,5 +60,10 @@ class Signapp(object):
 	def tokenValidation(self,token):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
-		return response.read()
+		data = response.read()
+		if (data['aud'] == config.aud) and (data['iss'] == iss):
+			ret = data['email']
+		else:
+			ret = ""
+		return ret
 
