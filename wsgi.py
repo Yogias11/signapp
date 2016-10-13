@@ -26,8 +26,8 @@ def application(environ, start_response):
 	if sign.getMenu(uri[:4])=="token":
 		result1 = request_body
 		result2 = post.get('token', [''])[0]
-		userdata = sign.tokenValidation(result2)
-		respon = result1+"<br>"+userdata
+		#userdata = sign.tokenValidation(result2)
+		respon = result1+"<br>"+result2
 	else:
 		result = "ganteng"
 		hbegin = sign.getHtmlBegin()
