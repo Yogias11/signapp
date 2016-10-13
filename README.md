@@ -119,8 +119,9 @@ mongod soft nproc 32000
 ```
 
 Use mongo db run mongo
+```sh
 > use signapp
 > db.sign.insert({NPM:"1234455"})
 > db.sign.find()
 > quit()
-
+```
