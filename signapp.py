@@ -56,11 +56,15 @@ class Signapp(object):
 			opsi = "other"
 		return opsi
 	
-	def tokenValidation(self,token):
+	def getData(self,token):
 		url = config.tokenurl+token
 		response = urllib.urlopen(url)
 		html = response.read()
-		if html.find(config.aud) and html.find(config.iss):
+		return html
+
+	def tokenValidation(self,token):
+		html = this.getData(token)
+		if (html.find(config.aud)>0) and (html.find(config.iss)>0):
 			ret = "valid"
 		else:
 			ret = "invalid"
