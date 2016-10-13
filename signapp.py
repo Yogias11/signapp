@@ -41,6 +41,16 @@ class Signapp(object):
 		dec = msg.decode("hex")
 		return obj.decrypt(dec)
 
+	def encodeData16(self,msg):
+		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
+		cp = obj.encrypt(msg)
+		return cp.encode("hex")
+
+	def decodeData16(self,msg):
+		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
+		dec = msg.decode("hex")
+		return obj.decrypt(dec)
+
 	def getHtmlBegin(self):
 		return config.html_begin
 
