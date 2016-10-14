@@ -25,7 +25,7 @@ def application(environ, start_response):
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
-		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
+		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam))
 		form = sign.getHtmlForm()
 		form = form.replace("NPMVALUE",data)
 		respon = hbegin + result + form + hend
@@ -42,7 +42,7 @@ def application(environ, start_response):
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
-		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
+		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam))
 		respon = hbegin + result + hend
 	## Passing HTML to client
 	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
