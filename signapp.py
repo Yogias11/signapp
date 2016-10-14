@@ -42,12 +42,12 @@ class Signapp(object):
 	def urlDecode16(self,uri):
 		if len(uri)%16 == 0:
 			dt = self.decodeData16(uri)
-			if dt[:1] == "0":
+			try:
+				int(dt[:2])
 				ln = int(dt[:2])
 				ret = dt[2:2+ln]
-			else:
-				ln = int(dt[:1])
-				ret = dt[1:1+ln]
+			except ValueError:
+				ret = dt
 		else:
 			ret = uri
 		return ret		
