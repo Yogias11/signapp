@@ -17,11 +17,13 @@ def application(environ, start_response):
 	## Menu Logic
 	url=sign.urlDecode16(uri[1:])
 	if sign.getMenu(url[:3])=="key":
-		data = url[4:13]
+		data = url[4:]
 		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
 		hbegin = sign.getHtmlBegin()
+		hend = sign.getHtmlEnd()
+		tokenuriparam = sign.tokenUri()
 		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
 		respon = hbegin + result + hend
 	if sign.getMenu(url[:3])=="token":
