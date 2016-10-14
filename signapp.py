@@ -20,6 +20,9 @@ class Signapp(object):
 		self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
 		self.db = self.conn.signapp
 	
+	def tokenUri(self):
+		return config.tokenuri
+
 	def random(self,ln):
                 ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 chars=[]

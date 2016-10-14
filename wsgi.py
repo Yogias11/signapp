@@ -28,11 +28,12 @@ def application(environ, start_response):
 		token = post.get('token', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
-		respon = "<br>"+email
+		respon = email
 	else:
 		result = "ganteng"
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
+		hend = hend.replace("TOKENURIPARAM",sign.tokenUri(),1)
 		respon = hbegin + result + hend
 	## Passing HTML to client
 	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
