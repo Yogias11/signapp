@@ -26,12 +26,16 @@ def application(environ, start_response):
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
 		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
-		respon = hbegin + result + sign.getHtmlForm() + hend
+		form = sign.getHtmlForm()
+		form = form.replace("NPMVALUE",data)
+		respon = hbegin + result + form + hend
 	elif sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
+		npm = post.get('npm', [''])[0]
+		numb = post.get('numb', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
-		respon = email
+		respon = sign.insertdata(npm,numb)
 	else:
 		result = url
 		hbegin = sign.getHtmlBegin()

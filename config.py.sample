@@ -31,9 +31,11 @@ html_begin = """
 """
 
 html_form = """
-<input id="numb">
-
-<button type="button" onclick="myFunction()">Submit</button>
+<div class="square">
+<h1>Nilai : </h1>
+<input type="text" id="numb">
+<button class="button" type="button" onclick="myFunction()">Submit</button>
+</div>
 """
 
 html_end = """

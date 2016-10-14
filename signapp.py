@@ -64,6 +64,7 @@ class Signapp(object):
 	def insertSign(self,NPM,Nilai):
 		self.db.sign
 		data = {"NPM":NPM,"Nilai":Nilai,"waktu":time.strftime("%d/%m/%Y")}
+		return data
 
 	def encodeData(self,msg):
 		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
