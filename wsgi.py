@@ -31,8 +31,8 @@ def application(environ, start_response):
 		respon = hbegin + result + form + hend
 	elif sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
-		npm = post.get('npm', [''])[0]
-		numb = post.get('numb', [''])[0]
+		npm = post.get('NPM', [''])[0]
+		numb = post.get('Nilai', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
 		respon = sign.insertSign(npm,numb,email)
