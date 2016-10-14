@@ -39,7 +39,6 @@ html_end = """
         if(!profile.getEmail()){
         document.getElementById('button').style.visibility = "hidden";
 	document.getElementById('Message').innerHTML = "Login Sebagai : " + profile.getEmail();
-		
 	}        
 	console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         console.log('Full Name: ' + profile.getName());
@@ -59,6 +58,20 @@ html_end = """
 	};
 	xhr.send('idtoken=' + id_token);
       };
+     function myFunction() {
+    	var x, text;
+
+    	// Get the value of the input field with id="numb"
+    	x = document.getElementById("numb").value;
+
+    	// If x is Not a Number or less than one or greater than 10
+    	if (isNaN(x) || x < 1 || x > 10) {
+        text = "Input not valid";
+    	} else {
+        text = "Input OK";
+    	}
+    	document.getElementById("Message").innerHTML = text;
+	}
     </script>
 </body>
 </html>
