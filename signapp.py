@@ -61,9 +61,9 @@ class Signapp(object):
 		self.db.sign
 		return self.db.sign.find_one({"NPM":NPM})
 	
-	def insertSign(self,NPM,Nilai):
+	def insertSign(self,NPM,Nilai,Pembimbing):
 		self.db.sign
-		data = {"NPM":NPM,"Nilai":Nilai,"waktu":time.strftime("%d/%m/%Y")}
+		data = {"NPM":NPM,"Nilai":Nilai,"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing}
 		return data
 
 	def encodeData(self,msg):
