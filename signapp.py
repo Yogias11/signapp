@@ -65,7 +65,7 @@ class Signapp(object):
 		self.db.sign
 		doc = {"NPM":NPM,"Nilai":Nilai,"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing}
 		idProcess = self.db.sign.insert_one(doc).inserted_id
-		return str(idProcess)
+		return str(doc)
 
 	def encodeData(self,msg):
 		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
