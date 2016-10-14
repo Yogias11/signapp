@@ -35,7 +35,7 @@ def application(environ, start_response):
 		numb = post.get('numb', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
-		respon = sign.insertdata(npm,numb)
+		respon = sign.insertSign(npm,numb)
 	else:
 		result = url
 		hbegin = sign.getHtmlBegin()
