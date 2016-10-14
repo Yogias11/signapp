@@ -26,7 +26,7 @@ def application(environ, start_response):
 		tokenuriparam = sign.tokenUri()
 		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
 		respon = hbegin + result + hend
-	if sign.getMenu(url[:3])=="token":
+	elif sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
