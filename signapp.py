@@ -49,7 +49,7 @@ class Signapp(object):
 				ln = int(dt[:1])
 				ret = dt[1:1+ln]
 		else:
-			ret = "invalid"
+			ret = uri
 		return ret		
 
 	def getAllSign(self,NPM):
