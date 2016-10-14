@@ -8,6 +8,7 @@ import config
 import pymongo
 import urllib
 import random
+import time
 from Crypto.Cipher import AES
 
 class Signapp(object):
@@ -60,9 +61,9 @@ class Signapp(object):
 		self.db.sign
 		return self.db.sign.find_one({"NPM":NPM})
 	
-	def insertSign(self,NPM,Nilai,rcvdate):
+	def insertSign(self,NPM,Nilai):
 		self.db.sign
-		data = {"NPM":NPM,"Nilai":Nilai,"waktu":rcvdate}
+		data = {"NPM":NPM,"Nilai":Nilai,"waktu":time.strftime("%d/%m/%Y")}
 
 	def encodeData(self,msg):
 		obj=AES.new(self.key,AES.MODE_CFB,self.iv)

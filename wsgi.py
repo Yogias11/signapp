@@ -18,9 +18,10 @@ def application(environ, start_response):
 	url=sign.urlDecode16(uri[1:])
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
-		result = ''
+		result = "<ol>"
 		for a in sign.getAllSign(data):
-			result=result+str(a)
+			result=result+"<li>"+str(a)+"</li>"
+		result = result+"</ol>"
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
