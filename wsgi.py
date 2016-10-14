@@ -15,7 +15,7 @@ def application(environ, start_response):
 	## Declare apps
 	sign = signapp.Signapp()
 	## Menu Logic
-	url=sign.urlDecode16(uri[:1])
+	url=sign.urlDecode16(uri[1:])
 	if sign.getMenu(url[:3])=="key":
 		data = url[4:]
 		result = ''
