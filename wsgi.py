@@ -22,7 +22,7 @@ def application(environ, start_response):
 		for a in sign.getAllSign(data):
 			result=result+str(a)
 		hbegin = sign.getHtmlBegin()
-		hend = sign.getHtmlEnd()
+		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
 		respon = hbegin + result + hend
 	if sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
