@@ -17,7 +17,7 @@ def application(environ, start_response):
 	## Menu Logic
 	url=sign.urlDecode16(uri[1:])
 	if sign.getMenu(url[:3])=="key":
-		data = url[4:]
+		data = url[3:]
 		result = ''
 		for a in sign.getAllSign(data):
 			result=result+str(a)
