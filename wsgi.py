@@ -25,7 +25,7 @@ def application(environ, start_response):
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
 		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
-		respon = hbegin + result + hend
+		respon = hbegin + result + sign.getHtmlForm() + hend
 	elif sign.getMenu(url[:3])=="token":
 		token = post.get('token', [''])[0]
 		html = sign.getTokenData(token)

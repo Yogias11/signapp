@@ -90,6 +90,9 @@ class Signapp(object):
 	def getHtmlEnd(self):
 		return config.html_end
 
+	def getHtmlForm(self):
+		return config.html_form
+
 	def getMenu(self,uri):
 		if uri == config.keyuri:
 			opsi = "key"
