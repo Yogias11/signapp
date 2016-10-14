@@ -30,7 +30,7 @@ def application(environ, start_response):
 		email = sign.getJsonData('email',html)
 		respon = email
 	else:
-		result = "ganteng"
+		result = url
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
