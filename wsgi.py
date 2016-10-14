@@ -33,7 +33,8 @@ def application(environ, start_response):
 		result = "ganteng"
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
-		hend = hend.replace("TOKENURIPARAM",sign.tokenUri(),1)
+		tokenuriparam = sign.tokenUri()
+		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam),1)
 		respon = hbegin + result + hend
 	## Passing HTML to client
 	start_response('200 OK', [('Content-Type', 'text/html'),('Content-Length', str(len(respon)))])
