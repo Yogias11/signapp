@@ -37,7 +37,7 @@ def application(environ, start_response):
 		email = sign.getJsonData('email',html)
 		if sign.emailAcl(email):
 			respon = sign.insertSign(npm,numb,email)
-		else
+		else:
 			respon = "invalid"
 	else:
 		result = url
