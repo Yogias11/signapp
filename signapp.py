@@ -60,6 +60,10 @@ class Signapp(object):
 	def getLastSign(self,NPM):
 		self.db.sign
 		return self.db.sign.find_one({"NPM":NPM})
+
+	def getToday(self,NPM):
+		self.db.sign
+		return self.db.sign.find({"NPM":NPM,"waktu":time.strftime("%d/%m/%Y")})
 	
 	def insertSign(self,NPM,Nilai,Pembimbing):
 		self.db.sign
