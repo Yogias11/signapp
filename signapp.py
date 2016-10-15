@@ -75,10 +75,10 @@ class Signapp(object):
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing):
 		cur = self.getToday(NPM)
 		if self.isIndexExist(cur):
-			return False
+			return "exist"
 		else:
 			self.insertSign(NPM,Nilai,Pembimbing)
-			return True
+			return "done"
 
 	def insertSign(self,NPM,Nilai,Pembimbing):
 		self.db.sign

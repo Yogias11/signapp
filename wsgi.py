@@ -36,7 +36,7 @@ def application(environ, start_response):
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
 		if sign.emailAcl(email):
-			respon = sign.insertSign(npm,numb,email)
+			respon = sign.insertTodayOnly(npm,numb,email)
 		else:
 			respon = "invalid"
 	else:
