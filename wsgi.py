@@ -35,8 +35,10 @@ def application(environ, start_response):
 		numb = post.get('Nilai', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
-		respon = sign.insertSign(npm,numb,email)
-		#respon = email+npm+numb
+		if sign.emailAcl(email):
+			respon = sign.insertSign(npm,numb,email)
+		else
+			respon = "invalid"
 	else:
 		result = url
 		hbegin = sign.getHtmlBegin()
