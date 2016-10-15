@@ -17,6 +17,7 @@ iv = "your iv 16 char"
 tokenurl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="
 iss = "accounts.google.com"
 aud = "WEB_CLIENT_ID"
+domainacl = "poltekpos.ac.id"
 
 ### HTML
 html_begin = """
@@ -62,9 +63,14 @@ html_form = """
 </div>
 """
 
+html_signout = """
+<a href="#" onclick="signOut();">Please change to institution email, Sign out here</a>
+"""
+
 html_end = """
 <div id="Message"></div>
 <div class="g-signin2" id="button" data-onsuccess="onSignIn"></div>
+<a href="#" onclick="signOut();" hidden>Sign out</a>
     <script>
 	var id_token;
       function onSignIn(googleUser) {
@@ -118,8 +124,14 @@ html_end = """
 		console.log("Nilai: " + x);
 		console.log("respon: " + text);
     	}
-    	document.getElementById("Message").innerHTML = text;
 	}
+	
+	function signOut() {
+    		var auth2 = gapi.auth2.getAuthInstance();
+    		auth2.signOut().then(function () {
+      		console.log('User signed out.');
+    		});
+  	}
     </script>
 </body>
 </html>

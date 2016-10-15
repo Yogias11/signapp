@@ -111,6 +111,12 @@ class Signapp(object):
 		html = response.read()
 		return html
 
+	def emailAcl(self,email):
+		if email.split('@')[1] == config.domainacl:
+			return True
+		else:
+			return False
+
 	def tokenValidation(self,token):
 		html = self.getTokenData(token)
 		if (html.find(config.aud)>0) and (html.find(config.iss)>0):
