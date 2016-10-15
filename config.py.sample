@@ -70,7 +70,6 @@ html_signout = """
 html_end = """
 <div id="Message"></div>
 <div class="g-signin2" id="button" data-onsuccess="onSignIn"></div>
-<a href="#" onclick="signOut();" hidden>Sign out</a>
     <script>
 	var id_token;
       function onSignIn(googleUser) {
@@ -115,9 +114,16 @@ html_end = """
         	xhr.open('POST', './TOKENURIPARAM');
         	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         	xhr.onload = function() {
-                console.log('Signed in as: ' + xhr.responseText);
-		document.getElementById('Message').innerHTML = "Sudah Masuk : " + xhr.responseText;
-		document.getElementById('square').style.visibility = "hidden";
+                	if(xhr.responseText == "invalid"){
+				console.log('Signed in as: ' + xhr.responseText);
+                        document.getElementById('Message').innerHTML = "Email tidak terdaftar,ganti email anda";
+                        document.getElementById('square').style.visibility = "hidden";
+			document.getElementById('signout').style.visibility = "visible";
+			}else{
+			console.log('Signed in as: ' + xhr.responseText);
+			document.getElementById('Message').innerHTML = "Sudah Masuk : " + xhr.responseText;
+			document.getElementById('square').style.visibility = "hidden";
+			}
 		};
 		xhr.send('token=' + id_token +'&NPM='+ y +"&Nilai="+ x );
 		console.log("NPM: " + y);
