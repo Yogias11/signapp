@@ -65,6 +65,21 @@ class Signapp(object):
 		self.db.sign
 		return self.db.sign.find({"NPM":NPM,"waktu":time.strftime("%d/%m/%Y")})
 	
+	def isIndexExist(self,cursor):
+		try:
+			cursor[0]
+			return True
+		except IndexError:
+    			return False  
+
+	def insertTodayOnly(self,NPM,Nilai,Pembimbing):
+		cur = self.getToday(NPM)
+		if self.isIndexExist(cur):
+			return False
+		else:
+			self.insertSign(NPM,Nilai,Pembimbing)
+			return True
+
 	def insertSign(self,NPM,Nilai,Pembimbing):
 		self.db.sign
 		doc = {"NPM":NPM,"Nilai":int(Nilai),"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing}
