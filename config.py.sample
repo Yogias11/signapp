@@ -24,16 +24,40 @@ html_begin = """
   <head>
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href='http://www.ngabara.ga/favicon.ico' rel='icon' type='image/x-icon'/>
+
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
   <title>Sign App</title>
+<style>
+.square {
+    background: #f2f2f2;
+    width: 15vw;
+    height: initial;
+}
+.square h1 {
+    color: #000;
+}
+input[type="text"] { font-size: 34px; width: 50px;}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+</style>
 	</head>
   <body>
 """
 
 html_form = """
-<div class="square">
+<div class="square" id="square">
 <h1>Nilai : </h1>
 <input type="text" id="numb">
+<input type="hidden" id="npm" value="NPMVALUE">
 <button class="button" type="button" onclick="myFunction()">Submit</button>
 </div>
 """
@@ -42,6 +66,7 @@ html_end = """
 <div id="Message"></div>
 <div class="g-signin2" id="button" data-onsuccess="onSignIn"></div>
     <script>
+	var id_token;
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -57,27 +82,41 @@ html_end = """
         console.log("Email: " + profile.getEmail());
 
         // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
+        id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST', './TOKENURIPARAM');
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.onload = function() {
-  		console.log('Signed in as: ' + xhr.responseText);
-	};
-	xhr.send('idtoken=' + id_token);
+	//var xhr = new XMLHttpRequest();
+	//xhr.open('POST', './TOKENURIPARAM');
+	//xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	//xhr.onload = function() {
+  	//	console.log('Signed in as: ' + xhr.responseText);
+	//};
+	//xhr.send('idtoken=' + id_token);
       };
      function myFunction() {
     	var x, text;
 
     	// Get the value of the input field with id="numb"
     	x = document.getElementById("numb").value;
+	y = document.getElementById("npm").value;
 
     	// If x is Not a Number or less than one or greater than 10
     	if (isNaN(x) || x < 1 || x > 10) {
         text = "Input not valid";
+	document.getElementById("Message").innerHTML = text;
     	} else {
-        text = "Input OK";
+        			console.log("ID Token: " + id_token);
+        	var xhr = new XMLHttpRequest();
+        	xhr.open('POST', './TOKENURIPARAM');
+        	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        	xhr.onload = function() {
+                console.log('Signed in as: ' + xhr.responseText);
+		document.getElementById('Message').innerHTML = "Sudah Masuk : " + xhr.responseText;
+		document.getElementById('square').style.visibility = "hidden";
+		};
+		xhr.send('token=' + id_token +'&NPM='+ y +"&Nilai="+ x );
+		console.log("NPM: " + y);
+		console.log("Nilai: " + x);
+		console.log("respon: " + text);
     	}
     	document.getElementById("Message").innerHTML = text;
 	}
