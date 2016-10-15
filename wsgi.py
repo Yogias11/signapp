@@ -18,7 +18,7 @@ def application(environ, start_response):
 	url=sign.urlDecode16(uri[1:])
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
-		result = "<ol>"
+		result = "<h4>"+data+"</h4><ol>"
 		for a in sign.getAllSign(data):
 			result=result+"<li>"+str(a)+"</li>"
 		result = result+"</ol>"
