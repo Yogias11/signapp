@@ -55,7 +55,7 @@ class Signapp(object):
 
 	def getAllSign(self,NPM):
 		self.db.sign
-		return self.db.sign.find({"NPM":NPM},{ "waktu": 1, "Nilai": 1, _id: 0 })
+		return self.db.sign.find({"NPM":NPM},{ "waktu": 1, "Nilai": 1 })
 	
 	def getLastSign(self,NPM):
 		self.db.sign
