@@ -55,10 +55,10 @@ class Signapp(object):
 			ret = uri
 		return ret		
 
-	def setTTL(self,token)
+	def setTTL(self,token):
 		return self.redis.setex(token,"valid",config.urltimeout)
 	
-	def getTTL(self,token)
+	def getTTL(self,token):
 		return self.redis.get(token)
 
 	def getAllSign(self,NPM):
