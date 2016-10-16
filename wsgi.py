@@ -33,10 +33,11 @@ def application(environ, start_response):
 		token = post.get('token', [''])[0]
 		npm = post.get('NPM', [''])[0]
 		numb = post.get('Nilai', [''])[0]
+		pemb = post.get('Topik', [''])[0]
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
 		if sign.emailAcl(email):
-			respon = sign.insertTodayOnly(npm,numb,email)
+			respon = sign.insertTodayOnly(npm,numb,email,pemb)
 		else:
 			respon = "invalid"
 	else:

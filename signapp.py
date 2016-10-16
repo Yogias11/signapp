@@ -55,7 +55,7 @@ class Signapp(object):
 
 	def getAllSign(self,NPM):
 		self.db.sign
-		return self.db.sign.find({"NPM":NPM},{ "waktu": 1, "Nilai": 1, "_id": 0 })
+		return self.db.sign.find({"NPM":NPM},{ "waktu": 1, "Nilai": 1, "Topik": 1,"_id": 0 })
 	
 	def getLastSign(self,NPM):
 		self.db.sign
@@ -72,17 +72,17 @@ class Signapp(object):
 		except IndexError:
     			return False  
 
-	def insertTodayOnly(self,NPM,Nilai,Pembimbing):
+	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
 		cur = self.getToday(NPM)
 		if self.isIndexExist(cur):
 			return "exist"
 		else:
-			self.insertSign(NPM,Nilai,Pembimbing)
+			self.insertSign(NPM,Nilai,Pembimbing,Topik)
 			return "done"
 
-	def insertSign(self,NPM,Nilai,Pembimbing):
+	def insertSign(self,NPM,Nilai,Pembimbing,Topik):
 		self.db.sign
-		doc = {"NPM":NPM,"Nilai":int(Nilai),"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing}
+		doc = {"NPM":NPM,"Nilai":int(Nilai),"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing,"Topik":Topik}
 		idProcess = self.db.sign.insert_one(doc).inserted_id
 		return str(doc)
 
