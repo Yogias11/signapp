@@ -25,7 +25,9 @@ def application(environ, start_response):
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
-		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam))
+		urlenc = sign.urlEncode16(tokenuriparam)
+		sign.setTTL(urlenc)
+		hend = hend.replace("TOKENURIPARAM",urlenc)
 		form = sign.getHtmlForm()
 		form = form.replace("NPMVALUE",data)
 		respon = hbegin + result + form + hend
@@ -37,7 +39,10 @@ def application(environ, start_response):
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
 		if sign.emailAcl(email):
-			respon = sign.insertTodayOnly(npm,numb,email,pemb)
+			if sign.getTTL(uri[1:]):
+				respon = sign.insertTodayOnly(npm,numb,email,pemb)
+			else:
+				respon = "expire"
 		else:
 			respon = "invalid"
 	else:

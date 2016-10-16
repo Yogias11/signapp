@@ -18,6 +18,7 @@ tokenurl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="
 iss = "accounts.google.com"
 aud = "WEB_CLIENT_ID"
 domainacl = "poltekpos.ac.id"
+urltimeout = 3600
 
 ### HTML
 html_begin = """

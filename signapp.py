@@ -55,11 +55,11 @@ class Signapp(object):
 			ret = uri
 		return ret		
 
-	def setUrlToken(self,email,token)
-		return self.redis.setex(email,token,config.urltimeout)
+	def setTTL(self,token)
+		return self.redis.setex(token,"valid",config.urltimeout)
 	
-	def getUrlToken(self,email)
-		return self.redis.get(email)
+	def getTTL(self,token)
+		return self.redis.get(token)
 
 	def getAllSign(self,NPM):
 		self.db.sign
