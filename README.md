@@ -6,6 +6,7 @@ Sign Approval Application for guidance and conseling Lecturer
  * uwsgi
  * pymongo
  * pycrypto
+ * redis
 
 ### Instalation
 Centos 6 x86_64_ (still on progress)
@@ -22,6 +23,7 @@ Centos 6 x86_64_ (still on progress)
 # pip install uwsgi
 # pip install pymongo
 # pip install pycrypto
+# pip install redis
 ```
 
 Centos 7
@@ -125,3 +127,17 @@ Use mongo db run mongo
 > db.sign.find()
 > quit()
 ```
+
+#### Redis
+This apps using redis to store TTL Token
+
+centos 7
+```sh
+# yum install redis
+# systemctl enable redis
+# systemctl start redis
+# systemctl status redis
+# redis-cli
+```
+
+
