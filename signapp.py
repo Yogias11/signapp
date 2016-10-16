@@ -9,12 +9,14 @@ import pymongo
 import urllib
 import random
 import time
+import redis
 from Crypto.Cipher import AES
 
 class Signapp(object):
 	def __init__(self):
 		self.key = config.key
 		self.iv = config.iv
+		self.redis = redis.Redis()
 		self.opendb()
 
 	def opendb(self): 
@@ -52,6 +54,12 @@ class Signapp(object):
 		else:
 			ret = uri
 		return ret		
+
+	def setUrlToken(self,email,token)
+		return self.redis.setex(email,token,config.urltimeout)
+	
+	def getUrlToken(self,email)
+		return self.redis.get(email)
 
 	def getAllSign(self,NPM):
 		self.db.sign
