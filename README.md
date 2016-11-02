@@ -73,6 +73,14 @@ Enforcing
 Permissive
 # systemctl restart nginx
 ```
+Beware, command above will not work after restart, you must set selinux to enable read socket
+```sh
+# yum install policycoreutils-python
+# grep nginx /var/log/audit/audit.log | audit2allow
+# grep nginx /var/log/audit/audit.log | audit2allow -m nginx
+# grep nginx /var/log/audit/audit.log | audit2allow -M nginx
+# semodule -i nginx.pp
+```
 
 
 Ubuntu
