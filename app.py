@@ -13,8 +13,8 @@ def hello():
     return f'Hello, {escape(name)}!'
     
 @app.route('/<name>')
-def belanja(name):
-    url=sign.urlDecode16(name)
+def menu(name):
+	url=sign.urlDecode16(name)
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
 		result = '<h2>'+data+'</h2><img src="https://cdn.vas.web.id/foto/'+data+'.png"><ol>'
@@ -30,20 +30,6 @@ def belanja(name):
 		form = sign.getHtmlForm()
 		form = form.replace("NPMVALUE",data)
 		respon = hbegin + result + form + hend
-	elif sign.getMenu(url[:3])=="token":
-		token = post.get('token', [''])[0]
-		npm = post.get('NPM', [''])[0]
-		numb = post.get('Nilai', [''])[0]
-		pemb = post.get('Topik', [''])[0]
-		html = sign.getTokenData(token)
-		email = sign.getJsonData('email',html)
-		if sign.emailAcl(email):
-			if sign.getTTL(uri[1:]):
-				respon = sign.insertTodayOnly(npm,numb,email,pemb)
-			else:
-				respon = "expire"
-		else:
-			respon = "invalid"
 	else:
 		result = url
 		hbegin = sign.getHtmlBegin()
@@ -51,6 +37,23 @@ def belanja(name):
 		tokenuriparam = sign.tokenUri()
 		hend = hend.replace("TOKENURIPARAM",sign.urlEncode16(tokenuriparam))
 		respon = hbegin + result + hend
-    return respon
+	return respon
     
-    
+@app.route('/<name>', methods=['POST'])
+def storedata(name):
+	url=sign.urlDecode16(name)
+	if sign.getMenu(url[:3])=="token":
+		token = request.form['token']
+		npm = request.form['NPM']
+		numb = request.form['Nilai']
+		pemb = request.form['Topik']
+		html = sign.getTokenData(token)
+		email = sign.getJsonData('email',html)
+		if sign.emailAcl(email):
+			if sign.getTTL(name):
+				respon = sign.insertTodayOnly(npm,numb,email,pemb)
+			else:
+				respon = "expire"
+		else:
+			respon = "invalid"
+	return respon
