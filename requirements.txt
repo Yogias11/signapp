@@ -3,7 +3,7 @@ gunicorn
 redis
 gspread
 oauth2client
-Crypto.Cipher
+Crypto
 urllib
 time
 random
