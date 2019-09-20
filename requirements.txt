@@ -4,6 +4,5 @@ redis
 gspread
 oauth2client
 Crypto
-urllib
 time
 random
