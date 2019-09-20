@@ -5,7 +5,7 @@ created by Rolly Maulana Awangga
 
 """
 import config
-import pymongo
+import os
 import urllib
 import random
 import time
@@ -16,12 +16,13 @@ class Signapp(object):
 	def __init__(self):
 		self.key = config.key
 		self.iv = config.iv
-		self.redis = redis.Redis()
+		#self.redis = redis.Redis()
 		self.opendb()
 
 	def opendb(self): 
-		self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
-		self.db = self.conn.signapp
+        self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
+		#self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
+		#self.db = self.conn.signapp
 	
 	def tokenUri(self):
 		return config.tokenuri
@@ -56,14 +57,14 @@ class Signapp(object):
 		return ret		
 
 	def setTTL(self,token):
-		return self.redis.setex(token,"valid",config.urltimeout)
+		return self.db.setex(token,"valid",config.urltimeout)
 	
 	def getTTL(self,token):
-		return self.redis.get(token)
+		return self.db.get(token)
 
 	def getAllSign(self,NPM):
-		self.db.sign
-		return self.db.sign.find({"NPM":NPM},{ "waktu": 1, "Nilai": 1, "Topik": 1,"_id": 0 })
+		#self.db.sign
+		return self.db.get(NPM)
 	
 	def getLastSign(self,NPM):
 		self.db.sign

@@ -1,0 +1,10 @@
+Flask
+os
+gunicorn
+redis
+gspread
+oauth2client
+Crypto.Cipher
+urllib
+time
+random
