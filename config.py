@@ -8,8 +8,10 @@ keyuri = "key"
 tokenuri = "token"
 
 ### Database
-mongohost = "localhost"
-mongoport = 27017
+sheet = "2019Proyek2"
+nilai=0
+komentar=1
+tanggal=2
 
 ### Security module
 key = "rollysuprganteng"

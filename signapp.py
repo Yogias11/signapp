@@ -11,6 +11,8 @@ import random
 import time
 import redis
 from Crypto.Cipher import AES
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 class Signapp(object):
 	def __init__(self):
@@ -21,6 +23,10 @@ class Signapp(object):
 
 	def opendb(self): 
 		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
+		scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+		creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+		client = gspread.authorize(creds)
+		self.sheet = client.open(config.sheet)
 		#self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
 		#self.db = self.conn.signapp
 	
@@ -62,9 +68,9 @@ class Signapp(object):
 	def getTTL(self,token):
 		return self.db.get(token)
 
-	def getAllSign(self,NPM):
+	def getAllSign(self,npm):
 		try:
-		    ambil=self.db.get(NPM).decode('utf-8')
+		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
 		except:
 		    ambil='kosong'
 		return ambil
