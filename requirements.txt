@@ -3,4 +3,4 @@ gunicorn
 redis
 gspread
 oauth2client
-Crypto
+pycrypto
