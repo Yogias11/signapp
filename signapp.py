@@ -20,7 +20,7 @@ class Signapp(object):
 		self.opendb()
 
 	def opendb(self): 
-        self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
+		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
 		#self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
 		#self.db = self.conn.signapp
 	
