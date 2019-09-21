@@ -68,40 +68,19 @@ class Signapp(object):
 		except:
 		    ambil='kosong'
 		return ambil
-	
-	def getLastSign(self,NPM):
-		self.db.sign
-		return self.db.sign.find_one({"NPM":NPM})
-
-	def getToday(self,NPM):
-		self.db.sign
-		return self.db.sign.find({"NPM":NPM,"waktu":time.strftime("%d/%m/%Y")})
     
 	def getPhoto(self,data):
 		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ol>'
 		return result
-	
-	def isIndexExist(self,cursor):
-		try:
-			cursor[0]
-			return True
-		except IndexError:
-    			return False  
 
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
 		cur = self.getAllSign(NPM)
 		if cur != 'kosong':
 			return "exist"
 		else:
-			self.db.set(NPM,Nilai+':'+Pembimbing+':'+Topik)
+			self.db.set(NPM,time.strftime("%d/%m/%Y")+':'+Nilai+':'+Pembimbing+':'+Topik)
 			#self.insertSign(NPM,Nilai,Pembimbing,Topik)
 			return "done"
-
-	def insertSign(self,NPM,Nilai,Pembimbing,Topik):
-		self.db.sign
-		doc = {"NPM":NPM,"Nilai":int(Nilai),"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing,"Topik":Topik}
-		idProcess = self.db.sign.insert_one(doc).inserted_id
-		return str(doc)
 
 	def encodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
