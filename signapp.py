@@ -103,7 +103,7 @@ class Signapp(object):
 	def decodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
 		dec = bytes.fromhex(msg)
-		return obj.decrypt(dec)
+		return obj.decrypt(dec).decode('utf-8')
 
 	def getHtmlBegin(self):
 		return config.html_begin
