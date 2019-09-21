@@ -130,7 +130,7 @@ class Signapp(object):
 		url = config.tokenurl+token
 		response = urllib.request.urlopen(url)
 		html = response.read()
-		return html
+		return html.decode('utf-8')
 
 	def emailAcl(self,email):
 		if email.split('@')[1] == config.domainacl:
