@@ -61,7 +61,7 @@ Pembahasan : <br>
 <textarea rows="10vw" cols="20vw" id="pemb"></textarea>
 <br>
 Nilai : <br>
-<input type="text" id="numb" maxlength="2"><br>
+<input type="text" id="numb" maxlength="3"><br>
 <input type="hidden" id="npm" value="NPMVALUE"><br>
 <button class="button" type="button" onclick="myFunction()">Submit</button>
 </div>
@@ -116,7 +116,7 @@ html_end = """
 	z = document.getElementById("pemb").value;
 
         // If x is Not a Number or less than one or greater than 10
-        if (isNaN(x) || x < 1 || x > 10) {
+        if (isNaN(x) || x < 1 || x > 100) {
         text = "Nilai tidak valid";
 	document.getElementById("Message").innerHTML = text;
         } else {
