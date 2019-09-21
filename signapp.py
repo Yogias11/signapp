@@ -17,7 +17,7 @@ class Signapp(object):
 		self.key = config.key
 		self.iv = config.iv
 		#self.redis = redis.Redis()
-		#self.opendb()
+		self.opendb()
 
 	def opendb(self): 
 		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
