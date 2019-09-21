@@ -23,5 +23,6 @@ Using Heroku
 # heroku ps -a signappname
 ```
 
+To generate QRCode please use awangga kepo repository.
 
 
