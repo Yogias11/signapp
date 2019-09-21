@@ -6,7 +6,7 @@ created by Rolly Maulana Awangga
 """
 import config
 import os
-import urllib
+import urllib.request
 import random
 import time
 import redis
@@ -128,7 +128,7 @@ class Signapp(object):
 	
 	def getTokenData(self,token):
 		url = config.tokenurl+token
-		response = urllib.urlopen(url)
+		response = urllib.request.urlopen(url)
 		html = response.read()
 		return html
 
