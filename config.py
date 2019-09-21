@@ -12,6 +12,9 @@ sheet = "2019Proyek2"
 nilai=0
 komentar=1
 tanggal=2
+pembimbing=3
+namakolom="pertemuan"
+pertemuanke=1
 
 ### Security module
 key = "rollysuprganteng"

@@ -75,16 +75,35 @@ class Signapp(object):
 		    ambil='kosong'
 		return ambil
     
+	def getSign(self,npm,num):
+		colnum=config.namakolom+str(num)
+		try:
+		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
+		except:
+		    ambil='kosong'
+		return ambil        
+    
 	def getPhoto(self,data):
 		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ul>'
 		return result
 
+	def setSign(self,npm,num,Nilai,Pembimbing,Topik):
+		colnum=config.namakolom+str(num)
+		try:
+		    ambil=self.sheet.get_worksheet(config.nilai).update_cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col, Nilai)
+		    ambil=self.sheet.get_worksheet(config.komentar).update_cell(self.sheet.get_worksheet(config.komentar).find(npm).row, self.sheet.get_worksheet(config.komentar).find(colnum).col, Topik)
+		    ambil=self.sheet.get_worksheet(config.tanggal).update_cell(self.sheet.get_worksheet(config.tanggal).find(npm).row, self.sheet.get_worksheet(config.tanggal).find(colnum).col, time.strftime("%d/%m/%Y"))
+		    ambil=self.sheet.get_worksheet(config.pembimbing).update_cell(self.sheet.get_worksheet(config.pembimbing).find(npm).row, self.sheet.get_worksheet(config.pembimbing).find(colnum).col, Pembimbing)
+		except:
+		    ambil='kosong'
+		return ambil   
+	
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
-		cur = self.getAllSign(NPM)
+		cur = self.getSign(NPM,config.pertemuanke)
 		if cur != 'kosong':
 			return "exist"
 		else:
-			self.db.set(NPM,time.strftime("%d/%m/%Y")+':'+Nilai+':'+Pembimbing+':'+Topik)
+			self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
 			#self.insertSign(NPM,Nilai,Pembimbing,Topik)
 			return "done"
 
