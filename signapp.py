@@ -17,7 +17,7 @@ class Signapp(object):
 		self.key = config.key
 		self.iv = config.iv
 		#self.redis = redis.Redis()
-		self.opendb()
+		#self.opendb()
 
 	def opendb(self): 
 		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
@@ -54,7 +54,7 @@ class Signapp(object):
 				ret = dt
 		else:
 			ret = uri
-		return ret		
+		return ret.decode('utf-8')
 
 	def setTTL(self,token):
 		return self.db.setex(token,"valid",config.urltimeout)
@@ -94,16 +94,6 @@ class Signapp(object):
 		doc = {"NPM":NPM,"Nilai":int(Nilai),"waktu":time.strftime("%d/%m/%Y"),"Pembimbing":Pembimbing,"Topik":Topik}
 		idProcess = self.db.sign.insert_one(doc).inserted_id
 		return str(doc)
-
-	def encodeData(self,msg):
-		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
-		cp = obj.encrypt(msg)
-		return cp.encode("hex")
-
-	def decodeData(self,msg):
-		obj=AES.new(self.key,AES.MODE_CFB,self.iv)
-		dec = msg.decode("hex")
-		return obj.decrypt(dec)
 
 	def encodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
