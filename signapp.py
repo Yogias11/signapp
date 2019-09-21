@@ -76,6 +76,10 @@ class Signapp(object):
 	def getToday(self,NPM):
 		self.db.sign
 		return self.db.sign.find({"NPM":NPM,"waktu":time.strftime("%d/%m/%Y")})
+    
+	def getPhoto(self,data):
+		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ol>'
+		return result
 	
 	def isIndexExist(self,cursor):
 		try:

@@ -17,7 +17,7 @@ def menu(name):
 	url=sign.urlDecode16(name)
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
-		result = '<h2>'+data+'</h2><img src="https://cdn.vas.web.id/foto/'+data+'.png"><ol>'
+		result = sign.getPhoto(data)
 		a = sign.getAllSign(data)
 		result=result+"<li>"+str(a)+"</li>"
 		result = result+"</ol>"
