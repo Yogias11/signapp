@@ -87,6 +87,9 @@ class Signapp(object):
 		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ul>'
 		return result
 
+	def getPertemuan(self):
+		return config.pertemuanke
+
 	def setSign(self,npm,num,Nilai,Pembimbing,Topik):
 		colnum=config.namakolom+str(num)
 		try:

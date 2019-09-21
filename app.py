@@ -19,7 +19,9 @@ def menu(name):
 		data = url[3:]
 		result = sign.getPhoto(data)
 		a = sign.getAllSign(data)
+		b = sign.getPertemuan()
 		result=result+"<li> Nilai rata-rata saat ini: "+str(a)+"</li>"
+		result=result+"<li> Saat ini penilaian untuk pertemuan ke : "+str(b)+"</li>"
 		result = result+"</ul>"
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
