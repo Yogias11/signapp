@@ -42,7 +42,7 @@ def menu(name):
 @app.route('/<name>', methods=['POST'])
 def storedata(name):
 	url=sign.urlDecode16(name)
-	if sign.getMenu(url[:3])=="token":
+	if sign.getMenu(url[:5])=="token":
 		token = request.form['token']
 		npm = request.form['NPM']
 		numb = request.form['Nilai']
