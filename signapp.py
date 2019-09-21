@@ -77,10 +77,11 @@ class Signapp(object):
     
 	def getSign(self,npm,num):
 		colnum=config.namakolom+str(num)
-		try:
-		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
-		except:
-		    ambil='kosong'
+		ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
+		#try:
+		#    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
+		#except:
+		#    ambil='kosong'
 		return ambil        
     
 	def getPhoto(self,data):
