@@ -18,8 +18,8 @@ def menu(name):
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
 		result = '<h2>'+data+'</h2><img src="https://cdn.vas.web.id/foto/'+data+'.png"><ol>'
-		for a in sign.getAllSign(data):
-			result=result+"<li>"+str(a)+"</li>"
+		a = sign.getAllSign(data)
+		result=result+"<li>"+str(a)+"</li>"
 		result = result+"</ol>"
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
