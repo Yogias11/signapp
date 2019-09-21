@@ -12,8 +12,8 @@ mongohost = "localhost"
 mongoport = 27017
 
 ### Security module
-key = "your key 16 char"
-iv = "your iv 16 char"
+key = "rollysuprganteng"
+iv = "1234surabihaneut"
 tokenurl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="
 iss = "accounts.google.com"
 aud = "WEB_CLIENT_ID"
