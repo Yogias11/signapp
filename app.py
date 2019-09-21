@@ -31,7 +31,7 @@ def menu(name):
 		form = form.replace("NPMVALUE",data)
 		respon = hbegin + result + form + hend
 	else:
-		result = url.decode('utf-8')
+		result = url
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
