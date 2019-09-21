@@ -76,7 +76,7 @@ class Signapp(object):
 		return ambil
     
 	def getPhoto(self,data):
-		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ol>'
+		result = '<h2>'+data+'</h2><img src="'+config.cdn+data+'.jpg"><ul>'
 		return result
 
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
