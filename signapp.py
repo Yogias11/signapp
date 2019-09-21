@@ -63,8 +63,11 @@ class Signapp(object):
 		return self.db.get(token)
 
 	def getAllSign(self,NPM):
-		#self.db.sign
-		return self.db.get(NPM).decode('utf-8') or 'kosong'
+		try:
+		    ambil=self.db.get(NPM).decode('utf-8')
+		except:
+		    ambil='belum di set'
+		return ambil
 	
 	def getLastSign(self,NPM):
 		self.db.sign
