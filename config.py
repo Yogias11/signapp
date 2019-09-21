@@ -26,7 +26,7 @@ html_begin = """
   <head>
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1092799040278-3dcl923ahbmbr3amtblha5mcblhim5a6.apps.googleusercontent.com">
-	<link href='http://www.ngabara.ga/favicon.ico' rel='icon' type='image/x-icon'/>
+	<link href='https://irc.poltekpos.ac.id/favicon.ico' rel='icon' type='image/x-icon'/>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   <title>Sign App</title>
 <style>
