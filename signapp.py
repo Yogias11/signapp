@@ -77,11 +77,10 @@ class Signapp(object):
     
 	def getSign(self,npm,num):
 		colnum=config.namakolom+str(num)
-		ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
-		#try:
-		#    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
-		#except:
-		#    ambil='kosong'
+		try:
+		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find(colnum).col).value
+		except:
+		    ambil='kosong'
 		return ambil        
     
 	def getPhoto(self,data):
@@ -101,7 +100,7 @@ class Signapp(object):
 	
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
 		cur = self.getSign(NPM,config.pertemuanke)
-		if cur != 'kosong':
+		if cur == 'kosong':
 			return "exist"
 		else:
 			self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
