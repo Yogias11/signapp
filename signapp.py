@@ -108,11 +108,11 @@ class Signapp(object):
 	def encodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
 		cp = obj.encrypt(msg)
-		return cp.encode("hex")
+		return cp.hex()
 
 	def decodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
-		dec = msg.decode("hex")
+		dec = bytes.fromhex(msg)
 		return obj.decrypt(dec)
 
 	def getHtmlBegin(self):
