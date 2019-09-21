@@ -57,7 +57,7 @@ class Signapp(object):
 		return ret
 
 	def setTTL(self,token):
-		return self.db.setex(token,"valid",config.urltimeout)
+		return self.db.set(token,"valid")
 	
 	def getTTL(self,token):
 		return self.db.get(token)
