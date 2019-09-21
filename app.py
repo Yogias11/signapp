@@ -14,7 +14,7 @@ def hello():
     
 @app.route('/<name>')
 def menu(name):
-	url=sign.urlDecode16(name).decode('utf-8')
+	url=sign.urlDecode16(name)
 	if sign.getMenu(url[:3])=="key":
 		data = url[3:]
 		result = '<h2>'+data+'</h2><img src="https://cdn.vas.web.id/foto/'+data+'.png"><ol>'
@@ -31,7 +31,7 @@ def menu(name):
 		form = form.replace("NPMVALUE",data)
 		respon = hbegin + result + form + hend
 	else:
-		result = url
+		result = url.decode('utf-8')
 		hbegin = sign.getHtmlBegin()
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
