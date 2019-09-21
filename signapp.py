@@ -66,7 +66,7 @@ class Signapp(object):
 		try:
 		    ambil=self.db.get(NPM).decode('utf-8')
 		except:
-		    ambil='belum di set'
+		    ambil='kosong'
 		return ambil
 	
 	def getLastSign(self,NPM):
@@ -85,11 +85,12 @@ class Signapp(object):
     			return False  
 
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
-		cur = self.getToday(NPM)
-		if self.isIndexExist(cur):
+		cur = self.getAllSign(NPM)
+		if cur != 'kosong':
 			return "exist"
 		else:
-			self.insertSign(NPM,Nilai,Pembimbing,Topik)
+			self.db.set(NPM,Nilai+':'+Pembimbing+':'+Topik)
+			#self.insertSign(NPM,Nilai,Pembimbing,Topik)
 			return "done"
 
 	def insertSign(self,NPM,Nilai,Pembimbing,Topik):
