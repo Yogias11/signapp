@@ -64,7 +64,7 @@ class Signapp(object):
 
 	def getAllSign(self,NPM):
 		#self.db.sign
-		return self.db.get(NPM).decode('utf-8')
+		return self.db.get(NPM).decode('utf-8') or 'kosong'
 	
 	def getLastSign(self,NPM):
 		self.db.sign
