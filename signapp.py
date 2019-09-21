@@ -54,7 +54,7 @@ class Signapp(object):
 				ret = dt
 		else:
 			ret = uri
-		return ret.decode('utf-8')
+		return ret
 
 	def setTTL(self,token):
 		return self.db.setex(token,"valid",config.urltimeout)
