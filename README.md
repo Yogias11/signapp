@@ -7,6 +7,7 @@ Sign Approval Application for guidance and conseling Lecturer
  * Redis Cloud add-on
  * git
  * heroku cli client
+ * Google API for sign in and spreadsheet access
  
 
 ### Instalation
