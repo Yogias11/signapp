@@ -19,10 +19,10 @@ class Signapp(object):
 		self.key = config.key
 		self.iv = config.iv
 		#self.redis = redis.Redis()
-		#self.opendb()
+		self.opendb()
 
 	def opendb(self): 
-		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
+		#self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
 		scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 		creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 		client = gspread.authorize(creds)
