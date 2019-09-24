@@ -69,10 +69,7 @@ class Signapp(object):
 		return self.db.get(token)
 
 	def getAllSign(self,npm):
-		try:
-		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
-		except:
-		    ambil='kosong'
+		ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
 		return ambil
     
 	def getSign(self,npm,num):
@@ -102,13 +99,8 @@ class Signapp(object):
 		return ambil   
 	
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
-		cur = self.getSign(NPM,config.pertemuanke)
-		if cur == 'kosong':
-			return "exist"
-		else:
-			self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
-			#self.insertSign(NPM,Nilai,Pembimbing,Topik)
-			return "done"
+		self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
+		return "done"
 
 	def encodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)
