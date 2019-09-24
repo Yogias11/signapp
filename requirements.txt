@@ -1,6 +1,5 @@
 Flask
 gunicorn
-redis
 gspread
 oauth2client
 pycrypto
