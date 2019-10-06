@@ -9,7 +9,7 @@ import os
 import urllib.request
 import random
 import time
-import redis
+#import redis
 from Crypto.Cipher import AES
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -22,7 +22,7 @@ class Signapp(object):
 		self.opendb()
 
 	def opendb(self): 
-		self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
+		#self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
 		scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 		creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 		client = gspread.authorize(creds)
@@ -69,10 +69,7 @@ class Signapp(object):
 		return self.db.get(token)
 
 	def getAllSign(self,npm):
-		try:
-		    ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
-		except:
-		    ambil='kosong'
+		ambil=self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row, self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
 		return ambil
     
 	def getSign(self,npm,num):
@@ -102,13 +99,8 @@ class Signapp(object):
 		return ambil   
 	
 	def insertTodayOnly(self,NPM,Nilai,Pembimbing,Topik):
-		cur = self.getSign(NPM,config.pertemuanke)
-		if cur == 'kosong':
-			return "exist"
-		else:
-			self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
-			#self.insertSign(NPM,Nilai,Pembimbing,Topik)
-			return "done"
+		self.setSign(NPM,config.pertemuanke,Nilai,Pembimbing,Topik)
+		return "done"
 
 	def encodeData16(self,msg):
 		obj=AES.new(self.key,AES.MODE_CBC,self.iv)

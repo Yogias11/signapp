@@ -29,7 +29,7 @@ def menu(name):
 		hend = sign.getHtmlEnd()
 		tokenuriparam = sign.tokenUri()
 		urlenc = sign.urlEncode16(tokenuriparam)
-		sign.setTTL(urlenc)
+		#sign.setTTL(urlenc)
 		hend = hend.replace("TOKENURIPARAM",urlenc)
 		form = sign.getHtmlForm()
 		form = form.replace("NPMVALUE",data)
@@ -56,10 +56,7 @@ def storedata(name):
 		html = sign.getTokenData(token)
 		email = sign.getJsonData('email',html)
 		if sign.emailAcl(email):
-			if sign.getTTL(name):
-				respon = sign.insertTodayOnly(npm,numb,email,pemb)
-			else:
-				respon = "expire"
+			respon = sign.insertTodayOnly(npm,numb,email,pemb)
 		else:
 			respon = "invalid"
 	return respon
