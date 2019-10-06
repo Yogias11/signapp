@@ -16,7 +16,9 @@ def hello():
 def menu(name):
 	url=sign.urlDecode16(name)
 	if sign.getMenu(url[:3])=="key":
-		data = url[3:]
+		data = url[3:].split('%')[0]
+        nilai = url[3:].split('%')[1]
+        komentar = url[3:].split('%')[2]
 		result = sign.getPhoto(data)
 		a = sign.getAllSign(data)
 		b = sign.getPertemuan()
@@ -31,6 +33,8 @@ def menu(name):
 		hend = hend.replace("TOKENURIPARAM",urlenc)
 		form = sign.getHtmlForm()
 		form = form.replace("NPMVALUE",data)
+        form = form.replace("KOMENTARVALUE",komentar)
+        form = form.replace("NILAIVALUE",nilai)
 		respon = hbegin + result + form + hend
 	else:
 		result = url
