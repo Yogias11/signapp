@@ -64,10 +64,10 @@ input[type="text"] { font-size: 10vw; width: 15vw;}
 html_form = """
 <div class="square" id="square">
 Pembahasan : <br>
-<textarea rows="10vw" cols="20vw" id="pemb"></textarea>
+<textarea rows="10vw" cols="20vw" id="pemb" value="KOMENTARVALUE"></textarea>
 <br>
 Nilai : <br>
-<input type="text" id="numb" maxlength="3"><br>
+<input type="text" id="numb" value="NILAIVALUE" maxlength="3"><br>
 <input type="hidden" id="npm" value="NPMVALUE"><br>
 <button class="button" type="button" onclick="myFunction()">Submit</button>
 </div>
@@ -137,7 +137,7 @@ html_end = """
 			document.getElementById('square').style.visibility = "hidden";
 			document.getElementById('signout').style.visibility = "visible";
 			}else if((xhr.responseText == "exist")){
-			document.getElementById('Message').innerHTML = "Masih ada hari esok yang cerah untuk bimbingan kembali :) ";
+			document.getElementById('Message').innerHTML = "Gagal Input Data, Mohon di input ulang";
                         document.getElementById('square').style.visibility = "hidden";
 			}else if((xhr.responseText == "expire")){
                         document.getElementById('Message').innerHTML = "Session Expire, silahkan scan ulang kembali";
