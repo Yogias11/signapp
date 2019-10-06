@@ -1,4 +1,5 @@
 client_secret.json
+.idea/
 # mac osx ignore file
 .DS_Store
 # Byte-compiled / optimized / DLL files
