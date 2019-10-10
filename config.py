@@ -64,7 +64,7 @@ input[type="text"] { font-size: 10vw; width: 15vw;}
 html_form = """
 <div class="square" id="square">
 Pembahasan : <br>
-<textarea rows="10vw" cols="20vw" id="pemb" value="KOMENTARVALUE"></textarea>
+<textarea rows="10vw" cols="20vw" id="pemb">KOMENTARVALUE</textarea>
 <br>
 Nilai : <br>
 <input type="text" id="numb" value="NILAIVALUE" maxlength="3"><br>
