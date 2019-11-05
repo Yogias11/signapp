@@ -5,11 +5,9 @@ created by Rolly Maulana Awangga
 
 """
 import config
-import os
 import urllib.request
 import random
 import time
-# import redis
 from Crypto.Cipher import AES
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -19,19 +17,16 @@ class Signapp(object):
     def __init__(self):
         self.key = config.key
         self.iv = config.iv
-        # self.redis = redis.Redis()
-        self.opendb()
 
     def opendb(self):
-        # self.db=redis.from_url(os.environ['REDISCLOUD_URL'])
         scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
         creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
         client = gspread.authorize(creds)
         self.sheet = client.open(config.sheet)
 
-    # self.conn = pymongo.MongoClient(config.mongohost, config.mongoport)
-    # self.db = self.conn.signapp
-
+    def getPertemuan(self):
+        return str(config.pertemuanke)
+    
     def tokenUri(self):
         return config.tokenuri
 

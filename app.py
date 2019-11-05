@@ -18,23 +18,28 @@ def menu(name):
         data = url[3:].split('%')[0]
         nilai = url[3:].split('%')[1]
         komentar = url[3:].split('%')[2]
-        result = sign.getPhoto(data)
-        a = sign.getAllSign(data)
-        b = sign.getPertemuan()
-        result = result + "<li> Nilai rata-rata saat ini: " + str(a) + "</li>"
-        result = result + "<li> Saat ini penilaian untuk pertemuan ke : " + str(b) + "</li>"
-        result = result + "</ul>"
-        hbegin = sign.getHtmlBegin()
-        hend = sign.getHtmlEnd()
-        tokenuriparam = sign.tokenUri()
-        urlenc = sign.urlEncode16(tokenuriparam)
-        # sign.setTTL(urlenc)
-        hend = hend.replace("TOKENURIPARAM", urlenc)
-        form = sign.getHtmlForm()
-        form = form.replace("NPMVALUE", data)
-        form = form.replace("KOMENTARVALUE", komentar)
-        form = form.replace("NILAIVALUE", nilai)
-        respon = hbegin + result + form + hend
+        pertemuanke = url[3:].split('%')[3]
+        if str(pertemuanke) == sign.getPertemuan():
+            sign.opendb()
+            result = sign.getPhoto(data)
+            a = sign.getAllSign(data)
+            b = sign.getPertemuan()
+            result = result + "<li> Nilai rata-rata saat ini: " + str(a) + "</li>"
+            result = result + "<li> Saat ini penilaian untuk pertemuan ke : " + str(b) + "</li>"
+            result = result + "</ul>"
+            hbegin = sign.getHtmlBegin()
+            hend = sign.getHtmlEnd()
+            tokenuriparam = sign.tokenUri()
+            urlenc = sign.urlEncode16(tokenuriparam)
+            # sign.setTTL(urlenc)
+            hend = hend.replace("TOKENURIPARAM", urlenc)
+            form = sign.getHtmlForm()
+            form = form.replace("NPMVALUE", data)
+            form = form.replace("KOMENTARVALUE", komentar)
+            form = form.replace("NILAIVALUE", nilai)
+            respon = hbegin + result + form + hend
+        else:
+            respon = "Pertemuan tidak valid"
     else:
         result = url
         hbegin = sign.getHtmlBegin()
