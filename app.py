@@ -19,7 +19,7 @@ def menu(name):
         nilai = url[3:].split('%')[1]
         komentar = url[3:].split('%')[2]
         pertemuanke = url[3:].split('%')[3]
-        if str(pertemuanke) == sign.getPertemuan():
+        if int(pertemuanke) == sign.getPertemuan():
             sign.opendb()
             result = sign.getPhoto(data)
             a = sign.getAllSign(data)
@@ -39,7 +39,7 @@ def menu(name):
             form = form.replace("NILAIVALUE", nilai)
             respon = hbegin + result + form + hend
         else:
-            respon = "Pertemuan tidak valid"
+            respon = "qrcode pertemuan ke " + pertemuanke
     else:
         result = url
         hbegin = sign.getHtmlBegin()
