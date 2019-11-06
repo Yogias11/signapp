@@ -82,7 +82,11 @@ class Signapp(object):
         return ambil
 
     def getPhoto(self, data):
-        result = '<h2>' + data + '</h2><img src="' + config.cdn + data + '.jpg"><ul>'
+        if data[:3] == "117":
+            cdn = config.cdn17
+        else:
+            cdn = config.cdn18
+        result = '<h2>' + data + '</h2><img src="' + cdn + data + '.jpg"><ul>'
         return result
 
     def getPertemuan(self):
