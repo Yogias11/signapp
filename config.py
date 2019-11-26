@@ -25,7 +25,8 @@ aud = "WEB_CLIENT_ID"
 domainacl = "poltekpos.ac.id"
 urltimeout = 3600
 ### cdn
-cdn="https://raw.githubusercontent.com/D4TI/2018/master/kecil/"
+cdn18="https://raw.githubusercontent.com/D4TI/2018/master/kecil/"
+cdn17="https://raw.githubusercontent.com/D4TI/2017/master/kecil/"
 ### HTML
 html_begin = """
 <html lang="en">
