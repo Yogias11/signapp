@@ -8,13 +8,13 @@ keyuri = "key"
 tokenuri = "token"
 
 ### Database
-sheet = "2019Proyek2"
+sheet = "BukuProyek2"
 nilai=0
 komentar=1
 tanggal=2
 pembimbing=3
 namakolom="pertemuan"
-pertemuanke=1
+pertemuanke=2
 
 ### Security module
 key = "rollysuprganteng"
@@ -114,6 +114,8 @@ html_end = """
 	//xhr.send('token=' + id_token);
       };
 	function myFunction() {
+	    document.getElementById('square').style.visibility = "hidden";
+	    document.getElementById('Message').innerHTML = "Mohon ditunggu..";
 
         var x,y,z,text;
 
@@ -137,16 +139,13 @@ html_end = """
 			document.getElementById('Message').innerHTML = "Bukan email institusi,klik log out dibawah dan login kembali";
 			document.getElementById('square').style.visibility = "hidden";
 			document.getElementById('signout').style.visibility = "visible";
-			}else if((xhr.responseText == "exist")){
+			}else if((xhr.responseText == "failed")){
 			document.getElementById('Message').innerHTML = "Gagal Input Data, Mohon di input ulang";
-                        document.getElementById('square').style.visibility = "hidden";
 			}else if((xhr.responseText == "expire")){
                         document.getElementById('Message').innerHTML = "Session Expire, silahkan scan ulang kembali";
-                        document.getElementById('square').style.visibility = "hidden";
 			}else{
 			console.log('Signed in as: ' + xhr.responseText);
-                        document.getElementById('Message').innerHTML = "Sudah Masuk : " + xhr.responseText;
-                        document.getElementById('square').style.visibility = "hidden";
+                        document.getElementById('Message').innerHTML = "Status : " + xhr.responseText;
 			}
 		};
 		xhr.send('token=' + id_token +'&NPM='+ y +"&Nilai="+ x +"&Topik="+ z );
