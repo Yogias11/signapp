@@ -25,7 +25,7 @@ class Signapp(object):
         self.sheet = client.open(config.sheet)
 
     def getPertemuan(self):
-        return str(config.pertemuanke)
+        return config.pertemuanke
     
     def tokenUri(self):
         return config.tokenuri
@@ -66,9 +66,7 @@ class Signapp(object):
         return self.db.get(token)
 
     def getAllSign(self, npm):
-        ambil = self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row,
-                                                            self.sheet.get_worksheet(config.nilai).find(
-                                                                'rata_rata').col).value
+        ambil = self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(npm).row,self.sheet.get_worksheet(config.nilai).find('rata_rata').col).value
         return ambil
 
     def getSign(self, npm, num):
@@ -113,7 +111,14 @@ class Signapp(object):
 
     def insertTodayOnly(self, NPM, Nilai, Pembimbing, Topik):
         self.setSign(NPM, config.pertemuanke, Nilai, Pembimbing, Topik)
-        return "done"
+        try:
+            cekNilai = self.sheet.get_worksheet(config.nilai).cell(self.sheet.get_worksheet(config.nilai).find(NPM).row,self.sheet.get_worksheet(config.nilai).find(config.namakolom+str(config.pertemuanke)).col).value
+            if cekNilai != '':
+                return "done"
+            else:
+                return "failed"
+        except:
+            return "failed"
 
     def encodeData16(self, msg):
         obj = AES.new(self.key, AES.MODE_CBC, self.iv)
